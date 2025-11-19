@@ -1,4 +1,4 @@
-# Video Compressor Pro -- README
+# Video Compressor Pro
 
 Prosty i intuicyjny program do kompresji plików wideo (.mp4) z użyciem
 **FFmpeg**.\
