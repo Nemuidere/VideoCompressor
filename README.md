@@ -1,44 +1,55 @@
-# Skrypt do Kompresji Wideo
+# Video Compressor Pro -- README
 
-Prosty skrypt Pythona do wsadowej (batch) kompresji plików `.mp4`. Używa **FFmpeg** do rekompresji wideo do kodeka **H.264 (libx264)**, aby drastycznie zmniejszyć rozmiar plików przy zachowaniu dobrej jakości.
+Prosty i intuicyjny program do kompresji plików wideo (.mp4) z użyciem
+**FFmpeg**.\
+Aplikacja umożliwia szybkie zmniejszenie rozmiaru nagrań przy zachowaniu
+wysokiej jakości, oferując tryb wsadowy oraz nowoczesny interfejs
+graficzny.
+
+![Image](preview.png)
+
+------------------------------------------------------------------------
+
+## 📥 Jak zdobyć aplikację?
+
+Masz dwie opcje:
+
+### 1. Pobierz gotowy plik `.exe` (Release)
+
+Najłatwiejszy sposób dla użytkowników Windows.\
+Wystarczy pobrać plik z zakładki **Releases**, uruchomić go i korzystać.
+
+### 2. Zbuduj program samodzielnie
+
+Jeśli chcesz wygenerować własną wersję:
+
+1.  Zainstaluj wymagania:
+    `bash     python -m pip install --upgrade pyinstaller ffmpeg-python customtkinter`
+2.  Uruchom: `bash     build.bat`
+3.  Gotowy plik znajduje się w folderze `dist/VideoCompressorPro.exe`.
+
+------------------------------------------------------------------------
 
 ## 🛠️ Wymagania
 
-* **Python 3.x**
-* **FFmpeg**: Musi być zainstalowany w systemie i dodany do globalnej zmiennej środowiskowej `PATH`.
-* **Biblioteki Python**:
-    ```bash
-    pip install ffmpeg-python colorlog python-dotenv
-    ```
+-   **Python 3.x** (tylko jeśli budujesz samodzielnie)
+-   **FFmpeg** -- musi być zainstalowany i dostępny w systemie
+-   System operacyjny: **Windows 10/11**
 
-## ⚙️ Konfiguracja
+------------------------------------------------------------------------
 
-Skrypt jest konfigurowany za pomocą pliku `.env`. Skopiuj `env.template` do nowego pliku o nazwie `.env` i dostosuj ścieżki oraz poziom kompresji.
+## 🚀 Używanie programu
 
-**Zawartość `.env.template`:**
+1.  Uruchom aplikację.
+2.  Wskaż ścieżkę do pliku `ffmpeg.exe` (zwykle wykrywa się
+    automatycznie).
+3.  Wybierz folder z plikami `.mp4` do kompresji.
+4.  Wybierz folder, w którym zapiszą się skompresowane nagrania.
+5.  Ustaw wartość CRF (jakość):
+    -   niższa wartość = lepsza jakość, większy plik\
+    -   wyższa wartość = mniejszy plik, gorsza jakość\
+        Rekomendowane: **23**
+6.  Kliknij **"ROZPOCZNIJ KOMPRESJĘ"**.
 
-```ini
-INPUT_PATH=E:\Videos\Input
-OUTPUT_PATH=E:\Videos\Output
-COMPRESSION_CRF=23
-```
-* `INPUT_PATH`: Folder ze źródłowymi plikami `.mp4`.
-* `OUTPUT_PATH`: Folder, do którego zostaną zapisane skompresowane kopie.
-* `COMPRESSION_CRF`: **Constant Rate Factor**. Kontroluje jakość i rozmiar pliku.
-    * **Niższa wartość** = Lepsza jakość, większy plik (np. `18`).
-    * **Wyższa wartość** = Gorsza jakość, mniejszy plik (np. `28`).
-    * Wartość `23` jest uznawana za domyślny, dobry kompromis.
+Postęp kompresji oraz logi będą wyświetlane w oknie programu.
 
----
-
-## 🚀 Uruchomienie
-
-1.  Upewnij się, że wszystkie wymagania są spełnione, a plik `.env` jest poprawnie skonfigurowany.
-2.  Umieść pliki wideo, które chcesz skompresować, w folderze `INPUT_PATH`.
-3.  Uruchom skrypt:
-
-    ```bash
-    python main.py
-    ```
-
-4.  Skompresowane pliki pojawią się w folderze `OUTPUT_PATH`.
